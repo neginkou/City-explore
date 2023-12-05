@@ -11,15 +11,15 @@ The goal is to enhance the city experience by offering a convenient tool for res
 
 Environment Setup:
 Install an IDE.
-Set up a backend language and frontend framework.
+Setuped a backend language and frontend framework.
 Database:
-Choose and set up a database system.
+Chose and setuped a database system.
 APIs and Libraries:
-Integrate mapping APIs and frontend libraries.
+Integrated mapping APIs and frontend libraries.
 Backend:
-Develop backend functions for authentication, data storage, and logic.
+Developed backend functions for authentication, data storage, and logic.
 Frontend:
-Create a responsive user interface and connect it to the backend.
+Created a responsive user interface and connect it to the backend.
 Authentication:
 Implement a secure user authentication system.
 Testing:
@@ -28,27 +28,60 @@ Deployment:
 Choose a hosting solution and deploy the app.
 Documentation:
 Create clear documentation for code and deployment.
-Continuous Improvement:
-Regularly update the app based on feedback and improvements.
+
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+
+The application, named City Explorer, is designed as a React application. It utilizes Axios for handling API requests and Bootstrap for styling. The project is version-controlled using Git, with a repository created on GitHub. The application is deployed on Netlify for live preview during development.
+
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+- 12-04-2023 01:30pm - Created a new GitHub repository, city-explorer, with no initial files.
+- 12-04-2023 01:35pm - Initialized a new React application named city-explorer locally.
+- 12-04-2023 01:50pm - Added a .gitignore file with React configurations, including ignoring of .env.
+- 12-04-2023 01:55pm - Connected the GitHub repo to the local repo.
+- 12-04-2023 02:00pm - Converted the README.md file to documentation reflecting the lab's current state.
+- 12-04-2023 02:10pm - Created a package.json file with dependencies (Axios and Bootstrap).
+- 12-04-2023 02:20pm - Deployed the application to Netlify.
+- 12-04-2023 03:00pm - Created a PR for the basic React app to the main branch with Netlify Deploy Preview.
+- 12-04-2023 03:15pm - Procured a LocationIQ free-tier account and updated API token settings.
+- 12-04-2023 03:30pm - Added .env file for API key in local development and Netlify deployment.
+- 12-04-2023 04:00pm - Built a form to collect a city name from the user with a "Explore!" submit button.
+- 12-04-2023 04:15pm - Used form data to query LocationIQ for city latitude and longitude.
+- 12-04-2023 04:45pm - Updated the page with display_name, latitude, and longitude in a Bootstrap component.
+- 12-04-2023 05:15pm - Created a Bootstrap component to handle errors with API calls, displaying status code and error message.
+- 12-04-2023 05:30pm - Deployed the updated React app to Netlify with error handling.
+  
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
+Special thanks to Zachary Moore for his collaborations
 
 
-Name of feature: ________________________________
+Name of feature: ____latitude, and longitude in Bootstrap component________________
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: ___4 hrs__
 
-Start time: _____
+Start time: _01:30____
 
-Finish time: _____
+Finish time: __05:30___
 
-Actual time needed to complete: _____
+Actual time needed to complete: ___3 hrs__
+
+![whiteboard](public/whiteboard.png)
+
+![lighthouse1](public/lighthouse1.png)
+
+A question within the context of this lab assignment:
+
+How was the security of the API key addressed, particularly when incorporating it into the Netlify deployment process?
+
+
+An observation about the lab assignment, or related ‘Ah-hah!’ moment:
+
+It's notable that the iterative development process, with frequent deployments to Netlify, provides an effective way to visualize and test the application's progress in real-time. This ensures that each feature is functioning as intended before merging into the main branch.
+
+How long you spent working on this assignment:
+
+I spent approximately 5 hours working on this assignment
