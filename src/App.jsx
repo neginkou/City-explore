@@ -8,7 +8,7 @@ import Map from './assets/components/Map.jsx';
 
 // Read in from .env.local file and live, it comes from "Environment Variables"
 const API_KEY = import.meta.env.VITE_API_KEY;
-
+console.log(API_KEY);
 function App() {
 
   const [city, setCity] = useState('');
@@ -23,6 +23,7 @@ function App() {
     // print a map
     console.log("Changing to", newCity);
   }
+
 
   // Use API (locationIQ) to get the lat/lon
   async function getLocation(cityName){
