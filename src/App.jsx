@@ -14,6 +14,7 @@ function App() {
   const [city, setCity] = useState('');
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [error, seterror] = useState(null);
 
   function changeCity(newCity) {
 
@@ -26,7 +27,7 @@ function App() {
 
 
   // Use API (locationIQ) to get the lat/lon
-  async function getLocation(cityName){
+  async function getLocation(cityName) {
 
     // 1. Call the API asynchronously
     let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${cityName}&format=json`;
@@ -39,8 +40,12 @@ function App() {
       setLatitude(response.data[0].lat);
       setLongitude(response.data[0].lon);
 
-    } catch(error) {
-      console.error(error.message)
+    } catch (error) {
+      console.error(error.message);
+      seterror(
+        `Error fetching location data. status Code: ${error.response?.status || "unknown"
+        }. ${error.message}`
+      )
     }
 
   }
@@ -49,6 +54,11 @@ function App() {
     <>
       <Header />
       <CityForm city={city} handleChangeCity={changeCity} />
+      {error && (
+        <div style={{ color: "red" }}>
+          <p>{error}</p>
+        </div>
+      )}
       <Map latitude={latitude} longitude={longitude} />
     </>
   )
