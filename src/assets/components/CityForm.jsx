@@ -16,7 +16,7 @@ function CityForm(props) {
     setShowHeading(true);
 
     
-    const newLatitude = 40.7128; // New York City
+    const newLatitude = 40.7128;
     const newLongitude = -74.0060;
 
     setLatitude(newLatitude);
