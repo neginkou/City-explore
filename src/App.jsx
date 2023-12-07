@@ -2,21 +2,32 @@ import { useState } from 'react';
 import CityForm from './assets/components/CityForm.jsx'
 import Header from './assets/components/Header.jsx';
 import Map from './assets/components/Map';
+import Footer from './assets/components/Footer.jsx';
+import Weather from './assets/components/Weather.jsx';
 
 import axios from 'axios'
 
 const API_KEY = import.meta.env.VITE_API_KEY;
-const API = import.meta.env.VITE_API_URL;
+const API = import.meta.env.VITE_API;
 
 function App() {
   const [city, setCity] = useState('');
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [data, setData] = useState({});
+  const [forecast, setForecast] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('')
+
 
   function changeCity(newCity) {
     getLocation(newCity);
   }
+  const updateCity = (e) => {
+    console.log(e)
+
+    setSearchQuery(e.target.value);
+  };
+
 
   async function getData(lat, lon, cityQuery) {
     try {
@@ -63,7 +74,7 @@ function App() {
       <Header></Header>
       <CityForm city={city} handleChangeCity={changeCity} longitude={longitude} latitude={latitude}></CityForm>
       <Map latitude={latitude} longitude={longitude}></Map>
-      
+      <Weather forecastData={data}/>
     </>
   )
 }
