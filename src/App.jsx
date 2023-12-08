@@ -15,13 +15,10 @@ function App() {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [data, setData] = useState({});
-  const [forecast, setForecast] = useState(null);
+  const [forecast, setForecast] = useState([]);
   const [searchQuery, setSearchQuery] = useState('')
 
 
-  function changeCity(newCity) {
-    getLocation(newCity);
-  }
   const updateCity = (e) => {
     console.log(e)
 
@@ -29,10 +26,13 @@ function App() {
   };
 
 
-  async function getData(lat, lon, cityQuery) {
+  async function getData(lat, lon) {
+    console.log(lat, lon);
     try {
-      let response = await axios.get(`${API}/weather?lat=${lat}&lon=${lon}&searchQuery=${cityQuery}`);
-      console.log(response.data)
+      let response = await axios.get(`${API}/weather?lat=${lat}&lon=${lon}&searchQuery=${searchQuery}`);
+      console.log(response.data);
+      setForecast (response.data);
+      console.log(forecast)
       setData(response.data);
 
     } catch (e) {
@@ -42,8 +42,8 @@ function App() {
 
 
 
-  async function getLocation(cityName) {
-    let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${cityName}&format=json`;
+  async function getLocation() {
+    let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${searchQuery}&format=json`;
     try {
       let response = await axios.get(url);
       
@@ -51,14 +51,12 @@ function App() {
       setCity(response.data[0].display_name)
       console.log(city)
 
-      
+      console.log(response.data[0].lat);
       setLatitude(response.data[0].lat);
       setLongitude(response.data[0].lon);
 
-      let splitCity = response.data[0].display_name.split(',');
-      let cityToSend = `${splitCity[0]}`;
-      console.log(cityToSend)
-      getData(latitude, longitude, cityToSend);
+      console.log(latitude, longitude);
+      getData(response.data[0].lat, response.data[0].lon);
 
 
 
@@ -72,9 +70,10 @@ function App() {
   return (
     <>
       <Header></Header>
-      <CityForm city={city} handleChangeCity={changeCity} longitude={longitude} latitude={latitude}></CityForm>
+      <CityForm city={city} handleChangeCity={getLocation} handleUpdateCity={updateCity} searchQuery= { searchQuery} longitude={longitude} latitude={latitude}></CityForm>
+      <h2>{city}</h2>
       <Map latitude={latitude} longitude={longitude}></Map>
-      <Weather forecastData={data}/>
+      <Weather forecastData={data} city={city}/>
     </>
   )
 }

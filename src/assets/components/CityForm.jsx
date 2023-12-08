@@ -1,46 +1,42 @@
-import { useState } from 'react';
+// import { useState, useEffect } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import styles from "./CityForm.module.css";
+
 
 function CityForm(props) {
-  const [typedInCity, setTypedInCity] = useState('');
-  const [showHeading, setShowHeading] = useState(false);
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
+  // const [typedCity, setTypedCity] = useState("");
 
-  function handleChange(e) {
-    setShowHeading(false);
-    setTypedInCity(e.target.value);
-  }
+  // function handleCityChange() {
 
-  function handleSubmit(e) {
+    // setTypedCity(e.target.value);
+  //   props.handleUpdateCity();
+  // }
+
+  function submitCity(e) {
     e.preventDefault();
-    setShowHeading(true);
+    props.handleChangeCity();
+   
 
-    
-    const newLatitude = 40.7128;
-    const newLongitude = -74.0060;
-
-    setLatitude(newLatitude);
-    setLongitude(newLongitude);
-
-    props.handleChangeCity(typedInCity);
   }
+
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <span>What City Are You In?</span>
-        <input onChange={handleChange} placeholder="Explore!" />
-      </label>
-      {
-        showHeading && props.city && (
-          <div>
-            <h2>Information about {props.city} Below</h2>
-            <p>Latitude: {latitude}</p>
-            <p>Longitude: {longitude}</p>
-          </div>
-        )
-      }
-    </form>
+    <>
+    <Form onSubmit={submitCity}>
+      <Form.Control
+        className={styles.Form}
+        type="location"
+        id="inputCity"
+        aria-describedby="location"
+        placeholder="Enter a City"
+        onChange={props.handleUpdateCity}
+      />
+      <Button className={styles.Button} variant="primary" type="submit">
+        Explore!
+      </Button>{" "}
+      </Form>
+    </>
   );
 }
 

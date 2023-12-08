@@ -1,16 +1,13 @@
 import React from 'react';
 
 const Weather = (props) => {
-  console.log("Forecast: ",props.forecast);
-  console.log("City= ", props.city);
- 
   return (
     <div className="weather-container">
-      {props.forecast && (
+      {props.forecastData && (
         <div>
           <h2 className="mb-4">Weather Forecast for {props.city}</h2>
           <div className="row">
-            {props.forecast.map((day, index) => (
+            {props.forecastData.map((day, index) => (
               <div key={index} className="col-md-4 mb-4">
                 <div className="card">
                   <div className="card-body">
