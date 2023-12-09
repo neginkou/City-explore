@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import CityForm from './assets/components/CityForm.jsx'
 import Header from './assets/components/Header.jsx';
-import Map from './assets/components/Map';
-import Footer from './assets/components/Footer.jsx';
+import Map from './assets/components/Map.jsx';
 import Weather from './assets/components/Weather.jsx';
-
+import Error from './assets/components/Error.jsx'
+import Footer from './assets/components/Footer.jsx';
+import Movie from './assets/components/Movies.jsx';
 import axios from 'axios'
 
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -70,12 +71,12 @@ function App() {
   return (
     <>
       <Header></Header>
-      <CityForm city={city} handleChangeCity={getLocation} handleUpdateCity={updateCity} searchQuery= { searchQuery} longitude={longitude} latitude={latitude}></CityForm>
+      <CityForm city={city} ChangeCity={getLocation} handleUpdateCity={updateCity} searchQuery={searchQuery} longitude={longitude} latitude={latitude}></CityForm>
       <h2>{city}</h2>
       <Map latitude={latitude} longitude={longitude}></Map>
-      <Weather forecastData={data} city={city}/>
+      <Weather forecastData={data} city={city} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

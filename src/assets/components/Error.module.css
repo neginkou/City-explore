@@ -1,0 +1,19 @@
+.Alert {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .Alert.BootstrapAlert {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .Alert.BootstrapAlert .alert-heading {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .Alert.BootstrapAlert p {
+    font-size: 1em;
+    margin-top: 10px;
+  }

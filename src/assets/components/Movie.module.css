@@ -1,0 +1,16 @@
+.movieCard {
+    background-color: #f8f9fa; /* Light gray background color */
+    border: 1px solid #dee2e6; /* Light gray border */
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .movieCard ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .movieCard li {
+    margin-bottom: 5px;
+  }
